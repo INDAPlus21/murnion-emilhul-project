@@ -87,6 +87,7 @@ The energies are equally easy to make, since you just need one for each energy, 
 The components are more difficult, mainly since some may want animation. You need one for each component, and certain moving or actuating components may want animation.
 
 Some basic elements will need to be made for the UI as well, such as the component list and the programming track. Mock up puts it roughly like this:
+<img src="images/mockup" width=700>
 
 Along with a separate UI which is similar, for debugging, where you can run the Siphon to see how well it operates in different biomes, with a running track of its output energy. Additionally, a debug is required for the Array, where you choose one of your saved Siphons to run alongside it, and can step through.
 
@@ -94,6 +95,7 @@ Once you get to longer gameplay loops, there’ll need to be a separate UI for t
 
 ### Energy Graph
 Notes for being made later: made in much the same fashion as the Opus Magnum graph:
+<img src="images/common alchemical primes & their transformations" width=700>
 
 Practically, it's a flowchart that leads from the basic four(?) elements of energy into every form of energy attainable.
 
