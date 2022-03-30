@@ -95,7 +95,7 @@ Once you get to longer gameplay loops, there’ll need to be a separate UI for t
 
 ### Energy Graph
 Notes for being made later: made in much the same fashion as the Opus Magnum graph:
-<img src="images/common alcbemical primes & their transformations.png" width=700>
+<img src="images/common alcbemical primes & their transmutations.png" width=700>
 
 Practically, it's a flowchart that leads from the basic four(?) elements of energy into every form of energy attainable.
 
