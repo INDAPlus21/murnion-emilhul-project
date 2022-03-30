@@ -1,10 +1,5 @@
 # murnion-emilhul-project
 
-Game is broken down into 3 essential parts:
-Collection
-Crafting
-Use
-
 ## Schedule 
 ### Week 13 
 
@@ -49,6 +44,11 @@ Siphons.
 - [ ] Verb and Noun List
 - [ ] Task List
 - [ ] Energy Pattern List
+
+Game is broken down into 3 essential parts:
+Collection
+Crafting
+Use
 
 ### Collection
 Much like use, collection is handled through a series of “harvest” quests in which the player must fulfill a series of time-mana-complexity requirements for certain effects.
