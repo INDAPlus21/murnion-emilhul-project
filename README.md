@@ -43,12 +43,12 @@ Siphons.
 ### Week 22
 
 ## Design Document 
-[x] Gameplay Doc
-[] Energy Graph
-[] Component List
-[] Verb and Noun List
-[] Task List
-[] Energy Pattern List
+- [x] Gameplay Doc
+- [ ] Energy Graph
+- [ ] Component List
+- [ ] Verb and Noun List
+- [ ] Task List
+- [ ] Energy Pattern List
 
 ### Collection
 Much like use, collection is handled through a series of “harvest” quests in which the player must fulfill a series of time-mana-complexity requirements for certain effects.
