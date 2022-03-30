@@ -3,27 +3,27 @@
 ## Schedule 
 ### Week 13 
 
-Design work, e.g. tasks, mana patterns, full elemental graph, verbs/nouns, and component list.
+* Design work, e.g. tasks, mana patterns, full elemental graph, verbs/nouns, and component list.
 
 ### Week 14 
 
-Finish core design
-Make the underlying grid.
-Design a puzzle to test the work.
-Emil V/LA
+* Finish core design
+* Make the underlying grid.
+* Design a puzzle to test the work.
+* Emil V/LA
 
 ### Week 15 
 
-Programming tracks and components.
-Elements and transformations.
+* Programming tracks and components.
+* Elements and transformations.
 
 ### Week 16
+**MVP COMPLETED**
 
-Verbs/nouns 
-Implement and test puzzle
-MVP finished.
-Further design work.
-Siphons.
+* Verbs/nouns.
+* Implement and test puzzle.
+* Siphons.
+* Further design work and planning of remaining weeks.
 
 ### Week 17 
 
@@ -32,10 +32,22 @@ Siphons.
 ### Week 19 
 
 ### Week 20 
-
+**PLAYABLE VERSION COMPLETED**
 ### Week 21 
 
 ### Week 22
+**FINISHED VERSION COMPLETED**
+
+## Naming convention
+
+### Issues & Commits
+
+Issues and commit messages are, by github standard, in future tense. I.e. `Add salt element`. Names should be short and descriptive. More iformation, if neccesary, should be explained in the description.
+
+## Pull Requests
+
+Pull Requests should be named after an associated issue. I.e. naming the branch/PR `issue/3-add-salt-element` for issue #3 called `Add salt element`.
+
 
 ## Design Document 
 - [x] Gameplay Doc
