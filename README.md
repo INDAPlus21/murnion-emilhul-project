@@ -104,78 +104,62 @@ distillation, which produces a smaller essence;
 transfusion, which reinforces the energy with an essence; 
 polarization, which requires to opposing elements to work, but refines the elements;
 equilibrium, which will try to make two elements into one middle element;
-radicalization; which will attempt to make the element into an Outer version, using Fulgens and Potentia.
-nullification; which will attempt to make the element into an Inner version, using Tenebrae and Salt.
 
 Elements (current):
-    Normals:
-    Aer
-    Terra
-    Ignis
-    Aqua
-    Salt
-    Tenebrae
-    Fulgens
-    Vitae
-    Cognitio
-    Potentia
-    Oculus
-
-    Radicals:
-    Shaper’s Law
-
-    Nulls:
-    
+* Aer
+* Terra
+* Ignis
+* Aqua
+* Salt
+* Tenebrae
+* Fulgens
+* Vitae
+* Cognitio
+* Potentia
+* Oculus
 
 ### Component List
 S
 
 ### Verb and Noun List
 Verbs:
-
-Restore:
-
-Repair:
-
-Find:
-
-Create:
-
-Damage
-
-Disable
-
-Refine:
-Banish
-Move
-See
+* Restore:
+* Repair:
+* Find:
+* Create:
+* Damage:
+* Disable:
+* Refine:
+* Banish:
+* Move:
+* See:
 Nouns:
-Earth
-Plant
-Fire
-Human
-Animal
-Water
-Dead
-Wind
-Higher Being
-Ritual
-Great Ritual
+* Earth
+* Plant
+* Fire
+* Human
+* Animal
+* Water
+* Dead
+* Wind
+* Higher Being
+* Ritual
+* Great Ritual
 
-Task List (By Biome)
-Frontier Village
-Fertilize the Fields (Restore Earth or Plant): Common
-Heal Injuries (Restore Human): Common
-Find Herbs (Find Plant): Common
-Heat Homes (Create Fire): Common
-Combat Banditry (Damage or Disable Humans): Uncommon
-Gather Food (Find Plant or Animal): Uncommon
-Clean Water (Refine Water or Create Warmth, Ritual): Uncommon
-Exorcize Spirit (Banish or Damage or Disable Dead, Ritual): Rare
-Celebrate the Coming Wind (Move Wind, Ritual): Rare
-Coming of the Harvest God (See or Find Higher Being, Great Ritual): Mythic
+Task List (By Biome):
+* Frontier Village
+   * Fertilize the Fields (Restore Earth or Plant): Common
+   * Heal Injuries (Restore Human): Common
+   * Find Herbs (Find Plant): Common
+   * Heat Homes (Create Fire): Common
+   * Combat Banditry (Damage or Disable Humans): Uncommon
+   * Gather Food (Find Plant or Animal): Uncommon
+   * Clean Water (Refine Water or Create Warmth, Ritual): Uncommon
+   * Exorcize Spirit (Banish or Damage or Disable Dead, Ritual): Rare
+   * Celebrate the Coming Wind (Move Wind, Ritual): Rare
+   * Coming of the Harvest God (See or Find Higher Being, Great Ritual): Mythic
 
-Energy Pattern List (By Biome)
+Energy Pattern List (By Biome):
 
 
 [Design Document](https://docs.google.com/document/d/1EvKw42rOrrKOPUNEtpm3v0FVfLEmR5syY7Dhh01svg8/edit?usp=sharing)
