@@ -1,34 +1,29 @@
 # murnion-emilhul-project
 
-Game is broken down into 3 essential parts:
-Collection
-Crafting
-Use
-
 ## Schedule 
 ### Week 13 
 
-Design work, e.g. tasks, mana patterns, full elemental graph, verbs/nouns, and component list.
+* Design work, e.g. tasks, mana patterns, full elemental graph, verbs/nouns, and component list.
 
 ### Week 14 
 
-Finish core design
-Make the underlying grid.
-Design a puzzle to test the work.
-Emil V/LA
+* Finish core design
+* Make the underlying grid.
+* Design a puzzle to test the work.
+* Emil V/LA
 
 ### Week 15 
 
-Programming tracks and components.
-Elements and transformations.
+* Programming tracks and components.
+* Elements and transformations.
 
 ### Week 16
+**MVP COMPLETED**
 
-Verbs/nouns 
-Implement and test puzzle
-MVP finished.
-Further design work.
-Siphons.
+* Verbs/nouns.
+* Implement and test puzzle.
+* Siphons.
+* Further design work and planning of remaining weeks.
 
 ### Week 17 
 
@@ -37,10 +32,22 @@ Siphons.
 ### Week 19 
 
 ### Week 20 
-
+**PLAYABLE VERSION COMPLETED**
 ### Week 21 
 
 ### Week 22
+**FINISHED VERSION COMPLETED**
+
+## Naming convention
+
+### Issues & Commits
+
+Issues and commit messages are, by github standard, in future tense. I.e. `Add salt element`. Names should be short and descriptive. More iformation, if neccesary, should be explained in the description.
+
+## Pull Requests
+
+Pull Requests should be named after an associated issue. I.e. naming the branch/PR `issue/3-add-salt-element` for issue #3 called `Add salt element`.
+
 
 ## Design Document 
 - [x] Gameplay Doc
@@ -49,6 +56,11 @@ Siphons.
 - [ ] Verb and Noun List
 - [ ] Task List
 - [ ] Energy Pattern List
+
+Game is broken down into 3 essential parts:
+Collection
+Crafting
+Use
 
 ### Collection
 Much like use, collection is handled through a series of “harvest” quests in which the player must fulfill a series of time-mana-complexity requirements for certain effects.
@@ -87,7 +99,7 @@ The energies are equally easy to make, since you just need one for each energy, 
 The components are more difficult, mainly since some may want animation. You need one for each component, and certain moving or actuating components may want animation.
 
 Some basic elements will need to be made for the UI as well, such as the component list and the programming track. Mock up puts it roughly like this:
-<img src="images/mockup" width=700>
+<img src="images/mockup.png" width=700>
 
 Along with a separate UI which is similar, for debugging, where you can run the Siphon to see how well it operates in different biomes, with a running track of its output energy. Additionally, a debug is required for the Array, where you choose one of your saved Siphons to run alongside it, and can step through.
 
@@ -95,7 +107,7 @@ Once you get to longer gameplay loops, there’ll need to be a separate UI for t
 
 ### Energy Graph
 Notes for being made later: made in much the same fashion as the Opus Magnum graph:
-<img src="images/common alchemical primes & their transformations" width=700>
+<img src="images/common alcbemical primes & their transmutations.png" width=700>
 
 Practically, it's a flowchart that leads from the basic four(?) elements of energy into every form of energy attainable.
 
