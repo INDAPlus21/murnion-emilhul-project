@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HexGrid : MonoBehaviour
-{
+public class HexGrid : MonoBehaviour {
     public int width = 20;
     public int height = 20;
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
     Canvas gridCanvas;
 
-    HexCell[] cells;
+    HexCell[] cells; 
     HexMesh hexMesh;
 
     void Awake () {
