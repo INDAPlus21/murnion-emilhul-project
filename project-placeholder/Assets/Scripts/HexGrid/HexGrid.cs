@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class HexGrid : MonoBehaviour
 {
-    public int width = 6;
-    public int height = 6;
+    public int width = 20;
+    public int height = 20;
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
     Canvas gridCanvas;
@@ -20,8 +20,8 @@ public class HexGrid : MonoBehaviour
 
         cells = new HexCell[height * width];
 
-        for (int x = 0, i = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = -width/2, i = 0; x < width/2; x++) {
+            for (int y = -height/2; y < height/2; y++) {
                 CreateCell(x, y, i++);
             }
         }
@@ -33,8 +33,8 @@ public class HexGrid : MonoBehaviour
 
     void CreateCell (int x, int y, int i) {
         Vector3 position;
-        position.x = (x + y * 0.5f - y / 2) * (HexMetrics.innerRadius * 2f);
-        position.y = y * (HexMetrics.outerRadius * 1.5f);
+        position.x = (x + y * 0.5f - y / 2) * (HexMetrics.innerRadius * 2f + 0.5f);
+        position.y = y * (HexMetrics.outerRadius * 1.5f + 0.5f);
         position.z = 100f;
 
         HexCell cell = cells[i] = Instantiate<HexCell>(cellPrefab);
