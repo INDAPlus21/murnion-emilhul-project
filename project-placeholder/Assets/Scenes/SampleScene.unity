@@ -244,7 +244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panSpeed: 45
+  panLimit: {x: 300, y: 130}
   scrollSpeed: 7000
+  minZoomSize: 35
+  maxZoomSize: 80
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
