@@ -13,8 +13,23 @@ public class CameraController : MonoBehaviour {
     public bool drag;
     // Update is called once per frame
     void Update() {
-        Vector3 pos = transform.position;
         
+        
+        // Camera movement with drag
+        if(Input.GetMouseButton(2)) {
+            dragDiff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            if(!drag) {
+                drag = true;
+                dragOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+        } else {
+            drag = false;
+        }
+        if(drag) {
+            transform.position = dragOrigin - dragDiff;
+        }
+
+        Vector3 pos = transform.position;
         // Camera movement with WASD
         if(Input.GetKey("d") || Input.GetKey("a") || Input.GetKey("w") || Input.GetKey("s")) {
             if (Input.GetKey("d")) {
@@ -31,24 +46,9 @@ public class CameraController : MonoBehaviour {
             }
             
         }
-        
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
         pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
         transform.position = pos;
-        
-        // Camera movement with drag
-        if(Input.GetMouseButton(2)) {
-            dragDiff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            if(!drag) {
-                drag = true;
-                dragOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
-        } else {
-            drag = false;
-        }
-        if(drag) {
-            transform.position = dragOrigin - dragDiff;
-        }
  
         // Camera scroll
         float fov = Camera.main.orthographicSize;

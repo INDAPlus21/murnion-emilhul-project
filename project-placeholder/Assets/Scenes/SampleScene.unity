@@ -244,10 +244,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panSpeed: 45
-  panLimit: {x: 300, y: 130}
+  panLimit: {x: 310, y: 140}
   scrollSpeed: 7000
   minZoomSize: 35
   maxZoomSize: 80
+  dragOrigin: {x: 0, y: 0, z: 0}
+  dragDiff: {x: 0, y: 0, z: 0}
+  drag: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
