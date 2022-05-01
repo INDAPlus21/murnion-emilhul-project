@@ -58,8 +58,6 @@ public struct HexCoordinates {
     }
 
     public Vector3 WorldPositionFromHexCoordinates(HexCoordinates hexPos) {
-        // position.x = (x + y * 0.5f - y / 2) * (HexMetrics.innerRadius * 2f + 0.5f);
-        // position.y = y * (HexMetrics.outerRadius * 1.5f + 0.5f);
         float xPos = ((X + Y/2) + Y * 0.5f - Y/2) * (HexMetrics.innerRadius * 2f + 0.5f);
         float yPos = Y * (HexMetrics.outerRadius * 1.5f + 0.5f);
         float zPos = 50f;

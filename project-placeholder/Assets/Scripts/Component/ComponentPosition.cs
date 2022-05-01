@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SnapToGrid : MonoBehaviour {
+public class ComponentPosition : MonoBehaviour {
     public HexCoordinates hexPos;
 
     void Update() {
