@@ -7,27 +7,49 @@ public class CameraController : MonoBehaviour {
     public Vector2 panLimit;
     public float scrollSpeed = 7000f;
     public float minZoomSize, maxZoomSize;
-    
+
+    public Vector3 dragOrigin;
+    public Vector3 dragDiff;
+    public bool drag;
     // Update is called once per frame
     void Update() {
-        // Camera movement with WASD
         Vector3 pos = transform.position;
-        if (Input.GetKey("d")) {
-            pos.x += panSpeed * Time.deltaTime;
+        
+        // Camera movement with WASD
+        if(Input.GetKey("d") || Input.GetKey("a") || Input.GetKey("w") || Input.GetKey("s")) {
+            if (Input.GetKey("d")) {
+                pos.x += panSpeed * Time.deltaTime;
+            }
+            if (Input.GetKey("a")) {
+                pos.x -= panSpeed * Time.deltaTime;
+            }
+            if (Input.GetKey("w")) {
+                pos.y += panSpeed * Time.deltaTime;
+            }
+            if (Input.GetKey("s")) {
+                pos.y -= panSpeed * Time.deltaTime;
+            }
+            
         }
-        if (Input.GetKey("a")) {
-            pos.x -= panSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey("w")) {
-            pos.y += panSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey("s")) {
-            pos.y -= panSpeed * Time.deltaTime;
-        }
+        
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
         pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
         transform.position = pos;
         
+        // Camera movement with drag
+        if(Input.GetMouseButton(2)) {
+            dragDiff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            if(!drag) {
+                drag = true;
+                dragOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+        } else {
+            drag = false;
+        }
+        if(drag) {
+            transform.position = dragOrigin - dragDiff;
+        }
+ 
         // Camera scroll
         float fov = Camera.main.orthographicSize;
         float scroll = Input.GetAxis("Mouse ScrollWheel");
