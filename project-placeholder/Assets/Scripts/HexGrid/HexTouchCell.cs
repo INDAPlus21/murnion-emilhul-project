@@ -22,9 +22,8 @@ public class HexTouchCell : MonoBehaviour
     void TouchCell(Vector3 position) {
         position = transform.InverseTransformPoint(position);
         HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-
-        // Do what you want to do when a cell is clicked.
-
-        Debug.Log("Touched at " + coordinates.ToString());
+        HexComponents componentGrid = (HexComponents)(transform.GetComponentInChildren(typeof(HexComponents)));
+        
+        componentGrid.CreateComponent(coordinates);
     }
 }
