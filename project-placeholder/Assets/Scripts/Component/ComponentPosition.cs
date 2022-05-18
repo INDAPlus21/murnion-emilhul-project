@@ -9,3 +9,20 @@ public class ComponentPosition : MonoBehaviour {
         transform.position = hexPos.WorldPositionFromHexCoordinates(hexPos);
     }
 }
+
+public enum Function {
+    Push,
+    Pull,
+    RotateLeft,
+    RotateRight,
+}
+
+public enum Direction {
+    East,
+    Northeast,
+    Southeast,
+    West,
+    Northwest,
+    Southwest,
+}
+
