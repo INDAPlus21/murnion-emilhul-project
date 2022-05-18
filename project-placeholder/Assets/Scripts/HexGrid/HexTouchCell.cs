@@ -6,7 +6,7 @@ public class HexTouchCell : MonoBehaviour
 {
     // Update is called once per frame
     void Update() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             HandleInput();
         }
     }
@@ -15,7 +15,17 @@ public class HexTouchCell : MonoBehaviour
         Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(inputRay, out hit)) {
-            TouchCell(hit.point);
+            InputComp ic = hit.transform.GetComponent<InputComp>();
+            Output o = hit.transform.GetComponent<Output>();
+            if(ic != null) {
+                (int, int) arrayPos = HexComponents.HexPosToArrayPos(HexCoordinates.FromPosition(hit.point));
+                ic.Activate(arrayPos.Item1, arrayPos.Item2);
+            } else if(o != null) {
+                (int, int) arrayPos = HexComponents.HexPosToArrayPos(HexCoordinates.FromPosition(hit.point));
+                o.Activate(arrayPos.Item1, arrayPos.Item2);
+            } else {
+                TouchCell(hit.point);
+            }
         }
     }
     
