@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputComp : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject element;
+    public Element.ElementType element; 
 
     HexComponents grid;
 

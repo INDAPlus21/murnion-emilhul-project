@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class HexComponents : MonoBehaviour
 {
     public GameObject componentPrefab;
+    public GameObject elementPrefab;
     GameObject[,] components;
     GameObject[,] elements;
     public static int height;
@@ -40,13 +41,14 @@ public class HexComponents : MonoBehaviour
         component.transform.localPosition = worldPos;
     }
 
-    public void CreateElement(int x, int y, GameObject elementPrefab) {
+    public void CreateElement(int x, int y, Element.ElementType transType) {
         HexCoordinates coords = ArrayPosToHexPos(x, y);
         Vector3 worldPos = coords.WorldPositionFromHexCoordinates(coords);
 
         worldPos.z = 10;
 
         GameObject element = elements[x, y] = Instantiate<GameObject>(elementPrefab, transform);
+        TransformElement(x, y, transType);
         element.transform.localPosition = worldPos;
     }
 
@@ -55,8 +57,18 @@ public class HexComponents : MonoBehaviour
         Destroy(element);
     }
 
-    public bool CheckElement(int x, int y) {
-        return (elements[x, y]);
+    public Element CheckElement(int x, int y) {
+        Element e = null;
+        if (elements[x, y]) {
+            e = elements[x, y].GetComponent<Element>();
+        }
+        return (e);
+    }
+
+    public void TransformElement(int x, int y, Element.ElementType transType) {
+        Element element = elements[x, y].GetComponent<Element>();
+        element.type = transType;
+        element.UpdateColor();
     }
 
     public static (int, int) HexPosToArrayPos(HexCoordinates coords) {
