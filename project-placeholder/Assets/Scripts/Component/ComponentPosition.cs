@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ComponentPosition : MonoBehaviour {
     public HexCoordinates hexPos;
@@ -10,19 +11,5 @@ public class ComponentPosition : MonoBehaviour {
     }
 }
 
-public enum Function {
-    Push,
-    Pull,
-    RotateLeft,
-    RotateRight,
-}
 
-public enum Direction {
-    East,
-    Northeast,
-    Southeast,
-    West,
-    Northwest,
-    Southwest,
-}
 

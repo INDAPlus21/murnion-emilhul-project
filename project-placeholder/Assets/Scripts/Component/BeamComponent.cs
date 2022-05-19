@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamComponent : MonoBehaviour
+public class BeamComponent : HexComponent
 {
     Direction dir;
     int length;
 
     // Start is called before the first frame update
-    public Dictionary<(int, int), (int, int)> Activate(Function c) {
+    public override Dictionary<(int, int), (int, int)> Activate(Function c) {
         Dictionary<(int, int), (int, int)> moves = new Dictionary<(int, int), (int, int)>();
         switch (c) {
             case Function.Push:

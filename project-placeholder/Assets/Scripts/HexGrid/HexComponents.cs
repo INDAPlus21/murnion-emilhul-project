@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class HexComponents : MonoBehaviour
 {
-    public GameObject componentPrefab;
-    GameObject[,] components;
+    public HexComponent componentPrefab;
+    HexComponent[,] components;
     public int height;
     public int width;
 
@@ -15,7 +15,7 @@ public class HexComponents : MonoBehaviour
         HexGrid grid = (HexGrid)transform.parent.GetComponent("HexGrid");
         width = grid.width;
         height = grid.height;
-        components = new GameObject[width, height];
+        components = new HexComponent[width, height];
     }
 
     // Start is called before the first frame update
@@ -32,11 +32,21 @@ public class HexComponents : MonoBehaviour
 
     public void CreateComponent(HexCoordinates coordinates) {
         (int, int) arrayPos = GridPosToArrayPos((GridCoordinates)coordinates, height);
-        Vector3 worldPos = coordinates.WorldPositionFromHexCoordinates(coordinates);
+        if (components[arrayPos.Item1, arrayPos.Item2] == null) {
+            Vector3 worldPos = coordinates.WorldPositionFromHexCoordinates(coordinates);
 
-        GameObject component = components[arrayPos.Item1, arrayPos.Item2] = Instantiate<GameObject>(componentPrefab);
-        component.transform.SetParent(transform, false);
-        component.transform.localPosition = worldPos;
+            HexComponent component = components[arrayPos.Item1, arrayPos.Item2] = Instantiate<HexComponent>(componentPrefab);
+            component.transform.SetParent(transform, false);
+            component.transform.localPosition = worldPos;
+            Debug.Log("Placed!");
+        } else {
+            Dictionary<(int, int), (int, int)> moves = components[arrayPos.Item1, arrayPos.Item2].Activate(Function.Push);
+            for (int i = 0; i < moves.Keys.Count; i++) {
+                Debug.Log(moves.Keys);
+                Debug.Log(moves.Values);
+            }
+            Debug.Log("Activated!");
+        }
     }
     
     public GridCoordinates ArrayPosToGridPos(int x, int y, int maxHeight) {
