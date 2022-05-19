@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HexTouchCell : MonoBehaviour {
 
-    public GameObject componentPrefab;
+    public HexComponent componentPrefab;
 
     // Update is called once per frame
     void Update() {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OutputGroup : MonoBehaviour {
 
-    public GameObject outputPrefab;
+    public HexComponent outputPrefab;
 
     public int[] xs;
     public int[] ys;

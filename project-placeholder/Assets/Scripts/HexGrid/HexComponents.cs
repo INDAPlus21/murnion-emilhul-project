@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HexComponents : MonoBehaviour {
     public GameObject elementPrefab;
-    GameObject[,] components;
+    HexComponent[,] components;
     GameObject[,] elements;
     public static int height;
     public static int width;
@@ -15,7 +15,7 @@ public class HexComponents : MonoBehaviour {
         HexGrid grid = (HexGrid)transform.parent.GetComponent("HexGrid");
         width = grid.width;
         height = grid.height;
-        components = new GameObject[width, height];
+        components = new HexComponent[width, height];
         elements = new GameObject[width, height];
     }
 
@@ -31,7 +31,7 @@ public class HexComponents : MonoBehaviour {
         
     }
 
-    public void CreateComponent(HexCoordinates coordinates, GameObject componentPrefab) {
+    public void CreateComponent(HexCoordinates coordinates, HexComponent componentPrefab) {
         (int, int) arrayPos = HexPosToArrayPos(coordinates);
         if (components[arrayPos.Item1, arrayPos.Item2] == null) {
             Vector3 worldPos = coordinates.WorldPositionFromHexCoordinates(coordinates);
@@ -44,7 +44,7 @@ public class HexComponents : MonoBehaviour {
         }
     }
 
-    public GameObject CompFromGrid(int x, int y) {
+    public HexComponent CompFromGrid(int x, int y) {
         return components[x, y];
     }
 
