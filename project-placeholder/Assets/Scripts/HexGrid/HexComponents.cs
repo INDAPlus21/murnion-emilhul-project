@@ -4,9 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HexComponents : MonoBehaviour
-{
-    public GameObject componentPrefab;
+public class HexComponents : MonoBehaviour {
     public GameObject elementPrefab;
     GameObject[,] components;
     GameObject[,] elements;
@@ -33,12 +31,16 @@ public class HexComponents : MonoBehaviour
         
     }
 
-    public void CreateComponent(HexCoordinates coordinates) {
+    public void CreateComponent(HexCoordinates coordinates, GameObject componentPrefab) {
         (int, int) arrayPos = HexPosToArrayPos(coordinates);
         Vector3 worldPos = coordinates.WorldPositionFromHexCoordinates(coordinates);
 
         GameObject component = components[arrayPos.Item1, arrayPos.Item2] = Instantiate<GameObject>(componentPrefab, transform, false);
         component.transform.localPosition = worldPos;
+    }
+
+    public GameObject CompFromGrid(int x, int y) {
+        return components[x, y];
     }
 
     public void CreateElement(int x, int y, Element.ElementType transType) {

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HexTouchCell : MonoBehaviour {
+
+    public GameObject componentPrefab;
+
     // Update is called once per frame
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -15,14 +18,14 @@ public class HexTouchCell : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(inputRay, out hit)) {
             InputComp ic = hit.transform.GetComponent<InputComp>();
-            OutputComp oc = hit.transform.GetComponent<OutputComp>();
+            OutputGroup og = hit.transform.GetComponent<OutputGroup>();
             TransformerComp tc = hit.transform.GetComponent<TransformerComp>();
             if(ic != null) {
                 (int, int) arrayPos = HexComponents.HexPosToArrayPos(HexCoordinates.FromPosition(hit.point));
                 ic.Activate(arrayPos.Item1, arrayPos.Item2);
-            } else if(oc != null) {
+            } else if(og != null) {
                 (int, int) arrayPos = HexComponents.HexPosToArrayPos(HexCoordinates.FromPosition(hit.point));
-                oc.Activate(arrayPos.Item1, arrayPos.Item2);
+                og.Activate(arrayPos.Item1, arrayPos.Item2);
             } else if(tc != null) {
                 (int, int) arrayPos = HexComponents.HexPosToArrayPos(HexCoordinates.FromPosition(hit.point));
                 tc.Activate(arrayPos.Item1, arrayPos.Item2);
@@ -37,6 +40,6 @@ public class HexTouchCell : MonoBehaviour {
         HexCoordinates coordinates = HexCoordinates.FromPosition(position);
         HexComponents componentGrid = (HexComponents)(transform.GetComponentInChildren(typeof(HexComponents)));
         
-        componentGrid.CreateComponent(coordinates);
+        componentGrid.CreateComponent(coordinates, componentPrefab);
     }
 }

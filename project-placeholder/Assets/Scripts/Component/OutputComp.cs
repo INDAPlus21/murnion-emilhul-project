@@ -10,10 +10,13 @@ public class OutputComp : MonoBehaviour {
     void Awake() {
         grid = (HexComponents)(transform.GetComponentInParent(typeof(HexComponents)));
     }
+    
     public void Activate(int x, int y) {
+
+    }
+
+    public bool CheckOutput(int x, int y) {
         Element e = grid.CheckElement(x, y);
-        if(e != null && e.type == element) {
-            grid.RemoveElement(x, y);
-        }
+        return(e != null && e.type == element);
     }
 }
