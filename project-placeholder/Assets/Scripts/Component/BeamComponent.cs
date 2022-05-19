@@ -7,7 +7,21 @@ public class BeamComponent : HexComponent
     Direction dir;
     int length;
 
-    // Start is called before the first frame update
+    public override void Init(int _length, Direction _dir) {
+        length = _length;
+        dir = _dir;
+    }
+
+    public override void Debug()
+    {
+        UnityEngine.Debug.Log(dir);
+        UnityEngine.Debug.Log(length);
+    }
+
+    void Update() {
+
+    }
+
     public override Dictionary<(int, int), (int, int)> Activate(Function c) {
         Dictionary<(int, int), (int, int)> moves = new Dictionary<(int, int), (int, int)>();
         switch (c) {
@@ -68,6 +82,27 @@ public class BeamComponent : HexComponent
             default:
                 break;
         }
+
+        float rotation = 0f;
+        switch (this.dir) {
+            case Direction.East:
+            case Direction.West:
+                break;
+            case Direction.Northeast:
+            case Direction.Southwest:
+                rotation = 60f;
+                break;
+            case Direction.Southeast:
+            case Direction.Northwest:
+                rotation = 120f;
+                break;
+        }
+        this.transform.eulerAngles = new Vector3(
+            0f,
+            0f,
+            rotation
+        );
+
         return moves;
     }
     

@@ -6,6 +6,14 @@ public class HexComponent : MonoBehaviour  {
     public virtual Dictionary<(int, int), (int, int)> Activate(Function c) { 
         return new Dictionary<(int, int), (int, int)>();
     }
+
+    public virtual void Init(int _length, Direction _dir) {
+        return;
+    }
+
+    public virtual void Debug() {
+        return;
+    }
 }
 public enum Function {
     Push,

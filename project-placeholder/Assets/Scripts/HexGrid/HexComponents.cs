@@ -36,16 +36,11 @@ public class HexComponents : MonoBehaviour
             Vector3 worldPos = coordinates.WorldPositionFromHexCoordinates(coordinates);
 
             HexComponent component = components[arrayPos.Item1, arrayPos.Item2] = Instantiate<HexComponent>(componentPrefab);
+            component.Init(2, Direction.Northeast);
             component.transform.SetParent(transform, false);
             component.transform.localPosition = worldPos;
-            Debug.Log("Placed!");
         } else {
             Dictionary<(int, int), (int, int)> moves = components[arrayPos.Item1, arrayPos.Item2].Activate(Function.Push);
-            for (int i = 0; i < moves.Keys.Count; i++) {
-                Debug.Log(moves.Keys);
-                Debug.Log(moves.Values);
-            }
-            Debug.Log("Activated!");
         }
     }
     
