@@ -12,7 +12,7 @@ public class InputComp : HexComponent
 
     HexComponents grid;
 
-    void Awake() {
+    void Start() {
         grid = (HexComponents)(transform.GetComponentInParent(typeof(HexComponents)));
         HexCoordinates hexPos = HexCoordinates.FromPosition(transform.position);
         (int, int) arrayPos = HexComponents.HexPosToArrayPos(hexPos);

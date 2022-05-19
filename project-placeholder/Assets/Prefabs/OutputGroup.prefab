@@ -112,9 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outputPrefab: {fileID: 1436429150165651618, guid: 0f2da8cd5667f7a4baa664449c34c35b, type: 3}
   element: 0
-  xs: 0000000001000000
-  ys: 0000000000000000
-  types: 0100000000000000
+  xs: 00000000
+  ys: 00000000
+  types: 01000000
 --- !u!114 &2685172143787216943
 MonoBehaviour:
   m_ObjectHideFlags: 0

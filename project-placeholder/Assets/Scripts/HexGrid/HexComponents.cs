@@ -5,6 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HexComponents : MonoBehaviour {
+
+    public static bool playingTrack = false;
+
+    public int instructionsPerSecond = 10;
+    private int framesSinceLastInstruction = 0;
+    private int framesPerInstruction;
+
+    private const int FramesPerSecond = 50;
+
     public GameObject elementPrefab;
     HexComponent[,] components;
     GameObject[,] elements;
@@ -20,15 +29,24 @@ public class HexComponents : MonoBehaviour {
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        framesPerInstruction = FramesPerSecond / instructionsPerSecond;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    // 50 calls per second
+    // 50 / instruction per second = timeBetween instrcutions.
+    void FixedUpdate() {
+        if(playingTrack) {
+            framesSinceLastInstruction++;
+            if(framesSinceLastInstruction % framesPerInstruction == 0) {
+                foreach(HexComponent comp in components) {
+                    if(comp) comp.Activate(Function.Push);
+                }
+                framesSinceLastInstruction = 0;
+            }
+        } else {
+            framesSinceLastInstruction = 0;
+        }
     }
 
     public void CreateComponent(HexCoordinates coordinates, HexComponent componentPrefab) {
