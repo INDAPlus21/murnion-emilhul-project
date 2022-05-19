@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class OutputComp : MonoBehaviour {
     public Element.ElementType element; 
-
+    Material mat;
     HexComponents grid;
 
-    void Awake() {
+    void Start() {
         grid = (HexComponents)(transform.GetComponentInParent(typeof(HexComponents)));
+        mat = transform.GetComponent<Renderer>().material;
+        UpdateColor();
     }
     
     public void Activate(int x, int y) {
@@ -18,5 +20,9 @@ public class OutputComp : MonoBehaviour {
     public bool CheckOutput(int x, int y) {
         Element e = grid.CheckElement(x, y);
         return(e != null && e.type == element);
+    }
+
+    public void UpdateColor() {
+        mat.color = Element.GetElementColor(element);
     }
 }

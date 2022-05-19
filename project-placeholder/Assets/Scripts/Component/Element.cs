@@ -15,15 +15,17 @@ public class Element : MonoBehaviour {
         mat = transform.GetComponent<Renderer>().material;
         UpdateColor();
     }
-
     public void UpdateColor() {
+        mat.color = GetElementColor(type);
+    }
+
+    public static Color GetElementColor(ElementType type) {
         switch(type) {
             case ElementType.Debug:
-                mat.color = Color.black;
-                break;
+                return Color.black;
             case ElementType.Salt:
-                mat.color = Color.white;
-                break;
+                return Color.white;
         }
+        return Color.black;
     }
 }
