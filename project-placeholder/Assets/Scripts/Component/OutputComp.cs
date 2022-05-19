@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutputComp : MonoBehaviour {
+public class OutputComp : HexComponent {
     public Element.ElementType element; 
     Material mat;
     HexComponents grid;
@@ -13,13 +13,16 @@ public class OutputComp : MonoBehaviour {
         UpdateColor();
     }
     
-    public void Activate(int x, int y) {
-
+    public override Dictionary<(int, int), (int, int)> Activate(Function c) {
+        return new Dictionary<(int, int), (int, int)>();
     }
 
-    public bool CheckOutput(int x, int y) {
-        Element e = grid.CheckElement(x, y);
-        return(e != null && e.type == element);
+    public override void Init(int _length, Direction _dir) {
+        return;
+    }
+
+    public override void Debug() {
+        return;
     }
 
     public void UpdateColor() {
