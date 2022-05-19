@@ -32,7 +32,7 @@ public struct HexCoordinates {
 	}
 
     public static HexCoordinates FromPosition(Vector3 position) {
-        float x = position.x / (HexMetrics.innerRadius * 2f);
+        float x = position.x / (HexMetrics.innerRadius * 2f + 0.5f);
         float z = -x;
         float offset = position.y / (HexMetrics.outerRadius * 3f);
         x -= offset;
@@ -55,6 +55,14 @@ public struct HexCoordinates {
         }
 
         return new HexCoordinates(iX, iY);
+    }
+
+    public Vector3 WorldPositionFromHexCoordinates(HexCoordinates hexPos) {
+        float xPos = ((X + Y/2) + Y * 0.5f - Y/2) * (HexMetrics.innerRadius * 2f + 0.5f);
+        float yPos = Y * (HexMetrics.outerRadius * 1.5f + 0.5f);
+        float zPos = 50f;
+        Vector3 postition = new Vector3(xPos, yPos, zPos);
+        return postition;
     }
 
     public override string ToString() {
