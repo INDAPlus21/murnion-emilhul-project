@@ -4,18 +4,19 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HexComponents : MonoBehaviour
-{
-    public HexComponent componentPrefab;
-    HexComponent[,] components;
-    public int height;
-    public int width;
+public class HexComponents : MonoBehaviour {
+    public GameObject elementPrefab;
+    GameObject[,] components;
+    GameObject[,] elements;
+    public static int height;
+    public static int width;
 
     void Awake() {
         HexGrid grid = (HexGrid)transform.parent.GetComponent("HexGrid");
         width = grid.width;
         height = grid.height;
-        components = new HexComponent[width, height];
+        components = new GameObject[width, height];
+        elements = new GameObject[width, height];
     }
 
     // Start is called before the first frame update
@@ -30,48 +31,67 @@ public class HexComponents : MonoBehaviour
         
     }
 
-    public void CreateComponent(HexCoordinates coordinates) {
-        (int, int) arrayPos = GridPosToArrayPos((GridCoordinates)coordinates, height);
+    public void CreateComponent(HexCoordinates coordinates, GameObject componentPrefab) {
+        (int, int) arrayPos = HexPosToArrayPos(coordinates);
         if (components[arrayPos.Item1, arrayPos.Item2] == null) {
             Vector3 worldPos = coordinates.WorldPositionFromHexCoordinates(coordinates);
 
-            HexComponent component = components[arrayPos.Item1, arrayPos.Item2] = Instantiate<HexComponent>(componentPrefab);
+            HexComponent component = components[arrayPos.Item1, arrayPos.Item2] = Instantiate<HexComponent>(componentPrefab, transform, false);
             component.Init(2, Direction.Northeast);
-            component.transform.SetParent(transform, false);
             component.transform.localPosition = worldPos;
         } else {
             Dictionary<(int, int), (int, int)> moves = components[arrayPos.Item1, arrayPos.Item2].Activate(Function.Push);
         }
     }
-    
-    public GridCoordinates ArrayPosToGridPos(int x, int y, int maxHeight) {
-        int gridX = x - (int)Math.Floor((double)y/2);
-        int gridY = y - maxHeight/2;
-        int gridZ = -x - y;
 
-        GridCoordinates coords = new GridCoordinates(gridX, gridY, gridZ);
-        return coords;
+    public GameObject CompFromGrid(int x, int y) {
+        return components[x, y];
     }
 
-    public (int, int) GridPosToArrayPos(GridCoordinates coords, int maxHeight) {
-        int y = coords.y + maxHeight/2;
-        int x = coords.x + (int)Math.Floor((double)y/2);
+    public void CreateElement(int x, int y, Element.ElementType transType) {
+        HexCoordinates coords = ArrayPosToHexPos(x, y);
+        Vector3 worldPos = coords.WorldPositionFromHexCoordinates(coords);
+
+        worldPos.z = 10;
+
+        GameObject element = elements[x, y] = Instantiate<GameObject>(elementPrefab, transform);
+        TransformElement(x, y, transType);
+        element.transform.localPosition = worldPos;
+    }
+
+    public void RemoveElement(int x, int y) {
+        GameObject element = elements[x, y];
+        Destroy(element);
+    }
+
+    public Element CheckElement(int x, int y) {
+        Element e = null;
+        if (elements[x, y]) {
+            e = elements[x, y].GetComponent<Element>();
+        }
+        return (e);
+    }
+
+    public void TransformElement(int x, int y, Element.ElementType transType) {
+        Element element = elements[x, y].GetComponent<Element>();
+        element.type = transType;
+        element.UpdateColor();
+    }
+
+    public static (int, int) HexPosToArrayPos(HexCoordinates coords) {
+        int y = coords.Y + height/2;
+        int x = coords.X + (int)Math.Floor((double)y/2);
 
         (int, int) arrayPos = (x, y);
         return arrayPos;
     }
-}
 
-public struct GridCoordinates {
-    public int x;
-    public int y;
-    public int z;
+    public HexCoordinates ArrayPosToHexPos(int x, int y) {
+        int hexX = x - (int)Math.Floor((double)y/2);
+        int hexY = y - height/2;
 
-    public GridCoordinates(int _x, int _y, int _z) {
-        x = _x;
-        y = _y;
-        z = _z;
+        HexCoordinates coords = new HexCoordinates(hexX, hexY);
+        return coords;
     }
 
-    public static explicit operator GridCoordinates(HexCoordinates coords) => new GridCoordinates(coords.X, coords.Y, -coords.X - coords.Y);
 }
